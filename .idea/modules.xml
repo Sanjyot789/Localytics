@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/air_quality_flask.iml" filepath="$PROJECT_DIR$/.idea/air_quality_flask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/localytics.iml" filepath="$PROJECT_DIR$/.idea/localytics.iml" />
     </modules>
   </component>
 </project>

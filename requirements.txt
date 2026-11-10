@@ -1,3 +1,4 @@
+-r requirements-app.txt
 Flask>=3.1,<4
 folium>=0.19,<1
 python-dotenv>=1,<2

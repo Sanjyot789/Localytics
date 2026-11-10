@@ -1,4 +1,4 @@
-"""Localytics Flask entry point. Run: python app.py."""
+"""Legacy Flask compatibility routes. python app.py starts the cross-platform Python app."""
 
 import math
 
@@ -94,4 +94,6 @@ def connectivity():
 register_area_views(app)
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=False)
+    from main import launch
+
+    launch()

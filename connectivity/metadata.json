@@ -7,7 +7,7 @@
     "delhi.pbf": 4217,
     "other1.pbf": 7132
   },
-  "overlap_duplicates_removed": 4217,
+  "overlap_dupliwcates_removed": 4217,
   "deduplication": "OSM type + ID; highest object version/timestamp wins; later input wins ties",
   "extracted_at_utc": "2026-10-17T13:01:22.386925+00:00",
   "counts": {

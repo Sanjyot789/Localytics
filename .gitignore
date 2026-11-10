@@ -2,10 +2,10 @@
 .venv/
 __pycache__/
 .pytest_cache/
-
-.pytest_cache/
 .ruff_cache/
-.venv/
 *.py[cod]
-.env
+build/
+dist/
+assets/datasets/
+*.spec
 .env.example

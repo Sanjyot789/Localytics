@@ -1,0 +1,35 @@
+name: Build Localytics apps
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: windows
+            runner: windows-latest
+          - target: macos
+            runner: macos-latest
+          - target: apk
+            runner: ubuntu-latest
+          - target: ios-simulator
+            runner: macos-latest
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install build tools
+        run: python -m pip install flet-cli==1.1.2
+      - name: Prepare public evidence
+        run: python scripts/prepare_app.py
+      - name: Build platform package
+        run: flet build ${{ matrix.target }} --python-version 3.13 --yes
+      - uses: actions/upload-artifact@v4
+        with:
+          name: localytics-${{ matrix.target }}
+          path: build/${{ matrix.target }}/

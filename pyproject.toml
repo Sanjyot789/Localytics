@@ -1,0 +1,39 @@
+[project]
+name = "localytics"
+version = "1.0.0"
+description = "Personalised area suitability analysis and neighbourhood comparison"
+requires-python = ">=3.12"
+dependencies = ["flet==1.1.2", "flet-map==1.1.2", "python-dotenv>=1,<2", "tzdata>=2026.1", "certifi>=2025.1"]
+
+[project.optional-dependencies]
+web = ["flet-web==1.1.2"]
+desktop = ["flet-desktop==1.1.2"]
+build = ["flet-cli==1.1.2"]
+
+[tool.flet]
+org = "org.localytics"
+product = "Localytics"
+company = "Localytics Group 7"
+bundle_id = "org.localytics.app"
+
+[tool.flet.app]
+path = "."
+module = "main"
+exclude = [".env", ".env.example", ".git", ".github", ".idea", ".venv", "tests", "scripts", "data", "static", "templates", "connectivity", "app.py", "area_views.py", "transport.py", "transport_data.py", "unified_map.py", "osm_data.py", "clustering.py", "README.md", "CROSS_PLATFORM.md", "requirements-dev.txt", "requirements.txt", "pytest.ini", "ruff.toml", "server.py", "Dockerfile", "compose.yaml"]
+
+[tool.flet.android]
+min_sdk_version = 24
+
+[tool.flet.android.permission]
+"android.permission.INTERNET" = true
+
+[tool.flet.macos.entitlement]
+"com.apple.security.network.client" = true
+
+[tool.flet.splash]
+color = "#F3F6FA"
+dark_color = "#17334A"
+
+[tool.setuptools]
+packages = ["native_app"]
+py-modules = ["main", "server", "config", "areas", "preferences", "observations", "geography", "data_store", "air_client"]

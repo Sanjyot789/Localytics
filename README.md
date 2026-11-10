@@ -2,17 +2,37 @@
 
 Local air-quality exploration and preference-based area recommendations.
 
-## Start
+## Run the Python app
+
+Localytics now has one Python interface for the browser and for native Android, iOS, Windows and macOS builds. The interface uses Flet and flet-map; the existing analysis and scoring remain Python. See [CROSS_PLATFORM.md](CROSS_PLATFORM.md) for the build requirements and current verification limits.
+
+Use Python 3.13 in a virtual environment:
+
+```bash
+python -m pip install -r requirements-app.txt
+python main.py
+```
+
+For the browser version:
+
+```bash
+python main.py --web
+```
+
+The browser address is http://127.0.0.1:8550/. The default screen is area recommendations; the bottom navigation opens nationwide air-quality search, nearby transport and the methodology/reports. `python app.py` also starts the new app.
+
+Your existing `.env` stays local/server-side. Set `DATA_GOV_API_KEY` there for air refreshes, or enter a key for the current session on the Air quality screen. Native packages exclude `.env` and ship a public evidence database with its air-query cache cleared. Area recommendations work offline; map tiles and live readings need internet access.
+
+### Previous Flask interface
+
+The previous website is retained for compatibility:
 
 ```bash
 python -m pip install -r requirements.txt
-python app.py
+flask --app app run
 ```
 
-Open http://127.0.0.1:5000/ for area comparison and recommendations (the homepage).
-Open http://127.0.0.1:5000/air-quality for the nationwide station explorer. The existing /areas address also works.
-Your existing `.env` remains server-side. Set `DATA_GOV_API_KEY` for air-quality refreshes.
-The area database is prebuilt: recommendations work without an API request or PBF processing at startup.
+Its homepage is http://127.0.0.1:5000/, and `/air-quality`, `/areas` and the existing API/export routes remain available. Its templates and Folium maps are not needed by the new native app.
 
 ## What is integrated
 
@@ -69,6 +89,10 @@ Air observations: https://www.data.gov.in/resource/real-time-air-quality-index-v
 
 ## Code organisation
 
+- `main.py`, `server.py`: Python desktop/browser entry points and ASGI deployment.
+- `native_app/`: responsive Python controls, per-session operations and private native storage.
+- `preferences.py`: shared input validation for the Python and Flask interfaces.
+- `scripts/prepare_app.py`, `scripts/build_app.py`: clean evidence bundling and native packaging.
 - `app.py`: Flask setup and station/transport routes.
 - `area_views.py`: homepage, area detail API and downloads.
 - `air_client.py`: paginated API requests and case-tolerant city filtering.
@@ -85,7 +109,7 @@ Air observations: https://www.data.gov.in/resource/real-time-air-quality-index-v
 - `scripts/`: offline area rebuild and evaluation commands.
 - `tests/`: regression tests. Test discovery excludes generated data and archived files.
 
-The unused standalone `mapping.py` renderer and hardcoded nearest-search demonstration were removed. All current routes remain available: `/`, `/areas`, `/air-quality`, `/connectivity` and area APIs/downloads.
+The unused standalone `mapping.py` renderer and hardcoded nearest-search demonstration were removed. The compatibility Flask interface retains these routes: `/`, `/areas`, `/air-quality`, `/connectivity` and area APIs/downloads.
 
 For development checks:
 

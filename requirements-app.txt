@@ -1,0 +1,7 @@
+flet==1.1.2
+flet-map==1.1.2
+flet-web==1.1.2
+flet-desktop==1.1.2
+python-dotenv>=1,<2
+tzdata>=2026.1
+certifi>=2025.1
