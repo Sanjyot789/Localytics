@@ -21,6 +21,8 @@ python main.py --web
 
 The browser address is http://127.0.0.1:8550/. The default screen is area recommendations; the bottom navigation opens nationwide air-quality search, nearby transport and the methodology/reports. `python app.py` also starts the new app.
 
+For a new checkout, copy `.env.example` to `.env` and replace `YOUR_API_KEY_HERE` with your own key. Keep `.env` private; the example file must contain placeholders only.
+
 Your existing `.env` stays local/server-side. Set `DATA_GOV_API_KEY` there for air refreshes, or enter a key for the current session on the Air quality screen. Native packages exclude `.env` and ship a public evidence database with its air-query cache cleared. Area recommendations work offline; map tiles and live readings need internet access.
 
 ### Previous Flask interface

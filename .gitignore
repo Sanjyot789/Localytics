@@ -1,11 +1,22 @@
+# Private configuration (the example contains placeholders only).
 .env
+.env.*
+!.env.example
+
+# Local environments and Python caches.
 .venv/
 __pycache__/
 .pytest_cache/
 .ruff_cache/
 *.py[cod]
+
+# Local editor and operating-system files.
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated packages and bundled copies of the source evidence.
 build/
 dist/
 assets/datasets/
 *.spec
-.env.example
