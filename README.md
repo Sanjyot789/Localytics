@@ -228,3 +228,7 @@ It runs at **http://127.0.0.1:5000/** and retains the area, air-quality, transpo
 - **Project code:** see [LICENSE](LICENSE).
 
 Developed as **Group 7's Python analytics project**.
+
+## Flat Finder integration
+
+[Run Localytics inside the Flat Finder property map](integrations/flat-finder/README.md).

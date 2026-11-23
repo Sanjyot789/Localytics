@@ -1,0 +1,24 @@
+#neighbourhoods {
+  border: 1px solid var(--chip-line);
+  border-radius: 12px;
+  padding: 10px;
+  margin-block: 12px;
+}
+#neighbourhoods label { display: block; margin-block: 10px; }
+#neighbourhoods output { float: right; color: var(--accent); }
+#neighbourhoods input[type=range] { display: block; width: 100%; accent-color: var(--accent); }
+#neighbourhoods input[type=number] { display: block; width: 100%; }
+#neighbourhoods summary, #neighbourhood-evidence summary { cursor: pointer; }
+#neighbourhoods p, #neighbourhood-evidence p { font-size: 13px; margin-block: 8px; overflow-wrap: anywhere; }
+#area-shortlist { padding-left: 20px; }
+#area-shortlist li { margin-block: 6px; }
+body.area-evidence-open #log { display: none; }
+body.area-evidence-open #neighbourhood-evidence:not([hidden]) { display: block; overflow: auto; height: auto; top: var(--gap); }
+body.area-evidence-open .controls { right: calc(var(--right-w) + var(--gap) * 2); }
+@media (max-width: 700px) {
+  body.area-evidence-open #neighbourhood-evidence:not([hidden]) {
+    display: block !important; z-index: 6; top: auto; left: 0; right: 0; bottom: 0;
+    width: auto; height: 46vh; border-radius: 18px 18px 0 0; padding: 16px;
+  }
+  body.area-evidence-open .controls { right: 10px; }
+}

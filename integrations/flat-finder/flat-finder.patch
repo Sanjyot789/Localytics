@@ -1,0 +1,44 @@
+diff --git a/web/index.html b/web/index.html
+index 0d34690..cc21d5f 100644
+--- a/web/index.html
++++ b/web/index.html
+@@ -38,0 +39,24 @@
++    <details id="neighbourhoods">
++      <summary>Neighbourhood filters · Delhi</summary>
++      <p>Compare neighbourhoods on the property map. Scores cover Delhi; this property dataset covers Gurugram.</p>
++      <button type="button" class="ghost" id="area-zoom">Centre map on Delhi</button>
++      <form id="area-preferences">
++        <div id="area-factors"></div>
++        <label>Search radius <select name="radius"><option>1</option><option selected>2</option><option>5</option></select> km</label>
++        <label>Facility count cap <select name="cap"><option>5</option><option selected>10</option><option>20</option></select></label>
++        <details><summary>Workplace / college</summary>
++          <label>Latitude <input name="work_lat" type="number" step="any"></label>
++          <label>Longitude <input name="work_lon" type="number" step="any"></label>
++        </details>
++        <details><summary>Must-have distances (km)</summary><div id="area-must"></div></details>
++        <button class="primary" type="submit">Update ranking</button>
++      </form>
++        <p id="area-status" role="status"></p>
++        <label>Map layer <select id="area-layer">
++          <option value="score">Suitability</option><option value="pm">PM2.5</option>
++          <option value="groups">Similar areas</option>
++        </select></label>
++        <p id="area-legend">Green ≥70 · Gold 40–69 · Red &lt;40 · Grey unranked</p>
++        <button class="ghost" type="button" id="area-export" disabled>Export all scores</button>
++        <h3>Top 10 neighbourhoods</h3><ol id="area-shortlist"></ol>
++    </details>
+@@ -158,0 +183,6 @@
++  <aside class="panel right" id="neighbourhood-evidence" hidden aria-label="Selected neighbourhood">
++    <button type="button" class="ghost" id="area-back">Close area details</button>
++    <div id="area-details">Select a grid cell or shortlist result.</div>
++    <h3>Compare up to three areas</h3><div id="area-compare"></div>
++  </aside>
++  <script type="module" src="/src/neighbourhoods.js"></script>
+diff --git a/web/src/main.js b/web/src/main.js
+index 8a8c9a1..bc4e8af 100644
+--- a/web/src/main.js
++++ b/web/src/main.js
+@@ -73,0 +74 @@ async function boot() {
++    document.dispatchEvent(new Event('flat-finder-map-ready'));
+@@ -94,0 +96 @@ async function boot() {
++    document.dispatchEvent(new Event("flat-finder-map-ready"));
